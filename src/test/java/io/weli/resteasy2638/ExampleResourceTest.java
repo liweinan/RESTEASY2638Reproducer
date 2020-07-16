@@ -40,7 +40,8 @@ public class ExampleResourceTest {
                 .multiPart(new MultiPartSpecBuilder(in).controlName("document").fileName("test.docx").build())
                 .multiPart(new MultiPartSpecBuilder("{ \"metaInfo\" : \"foobar\" }").controlName("metaData").mimeType("application/json").build())
                 .when()
-                .post("/hello/multi-class")
+//                .post("/hello/multi-class")
+                .post("/hello/multi-interface")
                 .then()
                 .statusCode(200)
                 .body(is("foobar"));
@@ -54,9 +55,10 @@ public class ExampleResourceTest {
                 .multiPart(new MultiPartSpecBuilder(in).controlName("document").fileName("test.docx").build())
                 .multiPart(new MultiPartSpecBuilder("{ \"metaInfo\" : \"foobar\" }").controlName("metaData").mimeType("application/json").build())
                 .when()
-                .post("/hello/multi-interface")
+//                .post("/hello/multi-interface")
+                .post("/hello/multi-class")
                 .then()
                 .statusCode(200)
-                .body(is("barfoo"));
+                .body(is("foobar"));
     }
 }
