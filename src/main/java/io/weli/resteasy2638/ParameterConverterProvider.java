@@ -14,17 +14,17 @@ public class ParameterConverterProvider implements ParamConverterProvider {
     public <T> ParamConverter<T> getConverter(Class<T> rawType, Type genericType, Annotation[] annotations) {
         System.err.println("TYPE: " + rawType);
         if (rawType == IMetaData.class) {
-            return (ParamConverter) new ParamConverter<IMetaData>() {
+            return (ParamConverter) new ParamConverter<MetaData>() {
 
                 @Override
-                public IMetaData fromString(String value) {
+                public MetaData fromString(String value) {
                     var rv = new MetaData();
                     rv.metaInfo = "barfoo";
                     return rv;
                 }
 
                 @Override
-                public String toString(IMetaData value) {
+                public String toString(MetaData value) {
                     return "{ }";
                 }
 
