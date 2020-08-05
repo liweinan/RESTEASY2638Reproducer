@@ -7,6 +7,7 @@ import javax.ws.rs.ext.ParamConverter;
 import javax.ws.rs.ext.ParamConverterProvider;
 import javax.ws.rs.ext.Provider;
 
+// used by client side
 @Provider
 public class ParameterConverterProvider implements ParamConverterProvider {
 
