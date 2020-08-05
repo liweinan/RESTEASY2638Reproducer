@@ -12,40 +12,39 @@ import java.io.InputStream;
 
 @QuarkusTest
 public class ExampleResourceTest {
-//
-//    @Test
-//    public void testHelloEndpoint() {
-//        given()
-//                .when().get("/hello")
-//                .then()
-//                .statusCode(200)
-//                .body(is("hello"));
-//    }
-//
-//    @Test
-//    public void testProviderTest() {
-//        given()
-//                .queryParam("metaData", "{}")
-//                .when().get("/hello/provider")
-//                .then()
-//                .statusCode(200)
-//                .body(is("barfoo"));
-//    }
-//
-//    @Test
-//    public void multiPartClass() {
-//        var in = getClass().getClassLoader().getResourceAsStream("dummy.txt");
-//        given()
-//                .contentType("multipart/form-data")
-//                .multiPart(new MultiPartSpecBuilder(in).controlName("document").fileName("test.docx").build())
-//                .multiPart(new MultiPartSpecBuilder("{ \"metaInfo\" : \"foobar\" }").controlName("metaData").mimeType("application/json").build())
-//                .when()
-//                .post("/hello/multi-class")
-////                .post("/hello/multi-interface")
-//                .then()
-//                .statusCode(200)
-//                .body(is("foobar"));
-//    }
+
+    @Test
+    public void testHelloEndpoint() {
+        given()
+                .when().get("/hello")
+                .then()
+                .statusCode(200)
+                .body(is("hello"));
+    }
+
+    @Test
+    public void testProviderTest() {
+        given()
+                .queryParam("metaData", "{}")
+                .when().get("/hello/provider")
+                .then()
+                .statusCode(200)
+                .body(is("barfoo"));
+    }
+
+    @Test
+    public void multiPartClass() {
+        var in = getClass().getClassLoader().getResourceAsStream("dummy.txt");
+        given()
+                .contentType("multipart/form-data")
+                .multiPart(new MultiPartSpecBuilder(in).controlName("document").fileName("test.docx").build())
+                .multiPart(new MultiPartSpecBuilder("{ \"metaInfo\" : \"foobar\" }").controlName("metaData").mimeType("application/json").build())
+                .when()
+                .post("/hello/multi-class")
+                .then()
+                .statusCode(200)
+                .body(is("foobar"));
+    }
 
     @Test
     public void multiPartInterface() {
@@ -56,7 +55,6 @@ public class ExampleResourceTest {
                 .multiPart(new MultiPartSpecBuilder("{ \"metaInfo\" : \"foobar\" }").controlName("metaData").mimeType("application/json").build())
                 .when()
                 .post("/hello/multi-interface")
-//                .post("/hello/multi-class")
                 .then()
                 .statusCode(200)
                 .body(is("foobar"));
