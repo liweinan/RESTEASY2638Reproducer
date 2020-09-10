@@ -26,6 +26,7 @@ public class ExampleResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     @Path("provider")
+    @DecodeInterfaceAs(MetaData.class)
     public String providerTest(@QueryParam("metaData") IMetaData metaData) {
         return metaData.getMetaInfo();
     }

@@ -10,7 +10,7 @@ import static org.hamcrest.CoreMatchers.is;
 
 import java.io.InputStream;
 
-@QuarkusTest
+//@QuarkusTest
 public class ExampleResourceTest {
 
     @Test
@@ -48,6 +48,11 @@ public class ExampleResourceTest {
 
     @Test
     public void multiPartInterface() {
+//        try {
+//            Thread.currentThread().join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         var in = getClass().getClassLoader().getResourceAsStream("dummy.txt");
         given()
                 .contentType("multipart/form-data")
