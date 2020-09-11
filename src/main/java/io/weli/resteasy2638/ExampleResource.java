@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 import org.jboss.resteasy.annotations.providers.multipart.PartType;
+import org.jboss.resteasy.plugins.providers.jsonb.AlternativeDeserializeAs;
 
 @Path("/hello")
 public class ExampleResource {
@@ -26,7 +27,6 @@ public class ExampleResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     @Path("provider")
-    @DecodeInterfaceAs(MetaData.class)
     public String providerTest(@QueryParam("metaData") IMetaData metaData) {
         return metaData.getMetaInfo();
     }
@@ -52,6 +52,7 @@ public class ExampleResource {
     @POST
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @AlternativeDeserializeAs(from = IMetaData.class, to = MetaData.class)
     @Path("multi-interface")
     public String multiPartInterface(@MultipartForm MPDataInterface data) {
         return data.metaData.getMetaInfo();
